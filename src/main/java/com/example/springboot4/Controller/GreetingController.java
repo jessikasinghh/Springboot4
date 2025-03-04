@@ -1,7 +1,7 @@
 package com.example.springboot4.Controller;
+//UC4
 
 import com.example.springboot4.Entity.Greeting;
-import com.example.springboot4.Entity.User;
 import com.example.springboot4.Service.GreetingService;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,12 +16,39 @@ public class GreetingController {
     }
 
     @PostMapping
-    public Greeting getGreeting(@RequestBody User user) {
-        return greetingService.getGreeting(user);
+    public Greeting saveGreeting(
+            @RequestParam(required = false) String firstName,
+            @RequestParam(required = false) String lastName
+    ) {
+        String message = greetingService.generateGreeting(firstName, lastName);
+        return greetingService.saveGreeting(message);
     }
 }
 
 
+
+//import com.example.springboot4.Entity.Greeting;
+//import com.example.springboot4.Entity.User;
+//import com.example.springboot4.Service.GreetingService;
+//import org.springframework.web.bind.annotation.*;
+//
+//@RestController
+//@RequestMapping("/greetings")
+//public class GreetingController {
+//
+//    private final GreetingService greetingService;
+//
+//    public GreetingController(GreetingService greetingService) {
+//        this.greetingService = greetingService;
+//    }
+//
+//    @PostMapping
+//    public Greeting getGreeting(@RequestBody User user) {
+//        return greetingService.getGreeting(user);
+//    }
+//}
+//
+//
 
 //import com.example.springboot4.Entity.Greeting;
 //import org.springframework.web.bind.annotation.*;
