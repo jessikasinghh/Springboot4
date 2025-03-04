@@ -1,5 +1,6 @@
 package com.example.springboot4.Controller;
 
+//UC7
 import com.example.springboot4.Entity.Greeting;
 import com.example.springboot4.Service.GreetingService;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +34,52 @@ public class GreetingController {
     public List<Greeting> getAllGreetings() {
         return greetingService.getAllGreetings();
     }
+
+    @PutMapping("/{id}")
+    public Greeting updateGreeting(@PathVariable Long id, @RequestParam String newMessage) {
+        return greetingService.updateGreeting(id, newMessage);
+    }
 }
 
+
+
+
+//UC6
+//import com.example.springboot4.Entity.Greeting;
+//import com.example.springboot4.Service.GreetingService;
+//import org.springframework.web.bind.annotation.*;
+//
+//import java.util.List;
+//
+//@RestController
+//@RequestMapping("/greetings")
+//public class GreetingController {
+//    private final GreetingService greetingService;
+//
+//    public GreetingController(GreetingService greetingService) {
+//        this.greetingService = greetingService;
+//    }
+//
+//    @PostMapping
+//    public Greeting saveGreeting(
+//            @RequestParam(required = false) String firstName,
+//            @RequestParam(required = false) String lastName
+//    ) {
+//        String message = greetingService.generateGreeting(firstName, lastName);
+//        return greetingService.saveGreeting(message);
+//    }
+//
+//    @GetMapping("/{id}")
+//    public Greeting getGreetingById(@PathVariable Long id) {
+//        return greetingService.findGreetingById(id);
+//    }
+//
+//    @GetMapping
+//    public List<Greeting> getAllGreetings() {
+//        return greetingService.getAllGreetings();
+//    }
+//}
+//
 
 
 
